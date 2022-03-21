@@ -1,8 +1,8 @@
-﻿using PSModuleAnalyzer.Core.Model;
-using PSModuleAnalyzer.Core.Repository;
+﻿using ModuleAnalyzer.Core.Model;
+using ModuleAnalyzer.Core.Repository;
 using System.Management.Automation.Language;
 
-namespace PSModuleAnalyzer.Core.Visitor
+namespace ModuleAnalyzer.Core.Visitor
 {
     public abstract class CommandVisitor : AstVisitor2
     {

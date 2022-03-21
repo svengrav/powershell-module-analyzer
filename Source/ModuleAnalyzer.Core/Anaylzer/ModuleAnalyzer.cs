@@ -1,11 +1,11 @@
-﻿using PSModuleAnalyzer.Core.Factory;
-using PSModuleAnalyzer.Core.Interfaces;
-using PSModuleAnalyzer.Core.Model;
-using PSModuleAnalyzer.Core.Repository;
+﻿using ModuleAnalyzer.Core.Factory;
+using ModuleAnalyzer.Core.Interfaces;
+using ModuleAnalyzer.Core.Model;
+using ModuleAnalyzer.Core.Repository;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 
-namespace PSModuleAnalyzer.Core.Anaylzer
+namespace ModuleAnalyzer.Core.Anaylzer
 {
     public class ModuleAnalyzer
     {
@@ -42,7 +42,7 @@ namespace PSModuleAnalyzer.Core.Anaylzer
                     out ParseError[] errors
                                 );
 
-                Visitor.CommandVisitor? commandVisitor = Factory.Create(command, _moduleDefinition);
+                ModuleAnalyzer.Core.Core.Visitor.CommandVisitor? commandVisitor = Factory.Create(command, _moduleDefinition);
                 ast.Visit(commandVisitor);
             }
 

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DGMLExtension\ModuleAnalyzer.DgmlFormatter.csproj" />
+    <ProjectReference Include="..\ModuleAnalyzer.Core\ModuleAnalyzer.Core.csproj" />
+    <ProjectReference Include="..\ModuleAnalyzer.DgmlFormatter\ModuleAnalyzer.DgmlFormatter.csproj" />
+    <ProjectReference Include="..\ModuleAnalyzer\PSModuleAnalyzer.Core.csproj" />
+  </ItemGroup>
+
+</Project>

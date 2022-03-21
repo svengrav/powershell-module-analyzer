@@ -1,6 +1,6 @@
-﻿using PSModuleAnalyzer.Core.Model;
+﻿using ModuleAnalyzer.Core.Model;
 
-namespace PSModuleAnalyzer.Core.Repository
+namespace ModuleAnalyzer.Core.Repository
 {
     public class ModuleDefinition
     {
@@ -29,7 +29,7 @@ namespace PSModuleAnalyzer.Core.Repository
 
         public HashSet<ModuleCommand> AddModuleCommands(HashSet<ModuleCommand> moduleCommands)
         {
-            foreach(var command in moduleCommands)
+            foreach (var command in moduleCommands)
             {
                 ModuleCommands.Add(command);
             }

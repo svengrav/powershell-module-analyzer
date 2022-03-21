@@ -1,6 +1,6 @@
-﻿using PSModuleAnalyzer.Core.Model;
+﻿using ModuleAnalyzer.Core.Model;
 
-namespace PSModuleAnalyzer.Core.Interfaces
+namespace ModuleAnalyzer.Core.Interfaces
 {
     public interface IAnalyzerOutput
     {

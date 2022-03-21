@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenSoftware.DgmlBuilder" Version="2.0.0">
+      <NoWarn></NoWarn>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModuleAnalyzer.Core\ModuleAnalyzer.Core.csproj" />
+    <ProjectReference Include="..\ModuleAnalyzer\PSModuleAnalyzer.Core.csproj" />
+  </ItemGroup>
+
+</Project>

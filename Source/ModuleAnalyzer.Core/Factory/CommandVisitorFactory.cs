@@ -1,8 +1,8 @@
-﻿using PSModuleAnalyzer.Core.Model;
-using PSModuleAnalyzer.Core.Repository;
-using PSModuleAnalyzer.Core.Visitor;
+﻿using ModuleAnalyzer.Core.Model;
+using ModuleAnalyzer.Core.Repository;
+using ModuleAnalyzer.Core.Visitor;
 
-namespace PSModuleAnalyzer.Core.Factory
+namespace ModuleAnalyzer.Core.Factory
 {
     public abstract class CommandVisitorFactory
     {

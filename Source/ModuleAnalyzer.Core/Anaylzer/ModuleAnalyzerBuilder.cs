@@ -1,7 +1,7 @@
-﻿using PSModuleAnalyzer.Core.Factory;
-using PSModuleAnalyzer.Core.Interfaces;
+﻿using ModuleAnalyzer.Core.Factory;
+using ModuleAnalyzer.Core.Interfaces;
 
-namespace PSModuleAnalyzer.Core.Anaylzer
+namespace ModuleAnalyzer.Core.Anaylzer
 {
     public class ModuleAnalyzerBuilder
     {
