@@ -1,9 +1,9 @@
-﻿using ModuleAnalyzer.Core.Model;
-using ModuleAnalyzer.Core.Repository;
-using ModuleAnalyzer.Core.Visitor;
+﻿using PsModuleAnalyzer.Core.Model;
+using PsModuleAnalyzer.Core.Repository;
+using PsModuleAnalyzer.Core.Visitor;
 using System.Management.Automation.Language;
 
-namespace ModuleAnalyzer.App.Implementation.Visitor
+namespace PsModuleAnalyzer.App.Visitor
 {
     public class DefaultCommandVisitor : CommandVisitor
     {

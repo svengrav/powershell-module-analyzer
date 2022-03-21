@@ -1,4 +1,4 @@
-﻿namespace ModuleAnalyzer.Core.Model
+﻿namespace PsModuleAnalyzer.Core.Model
 {
     public class ModuleCommandCall
     {

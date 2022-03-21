@@ -1,6 +1,6 @@
-﻿using ModuleAnalyzer.Core.Model;
+﻿using PsModuleAnalyzer.Core.Model;
 
-namespace ModuleAnalyzer.Core.Repository
+namespace PsModuleAnalyzer.Core.Repository
 {
     public class ModuleDefinition
     {

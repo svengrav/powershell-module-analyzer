@@ -1,7 +1,7 @@
-﻿using ModuleAnalyzer.Core.Interfaces;
-using ModuleAnalyzer.Core.Model;
+﻿using PsModuleAnalyzer.Core.Interfaces;
+using PsModuleAnalyzer.Core.Model;
 
-namespace ModuleAnalyzer.App.Implementation.Output
+namespace PsModuleAnalyzer.App.Output
 {
     public class MermaidOutput : IAnalyzerOutput
     {

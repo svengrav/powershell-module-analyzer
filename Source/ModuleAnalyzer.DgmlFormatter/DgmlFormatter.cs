@@ -1,17 +1,11 @@
-﻿using ModuleAnalyzer.Core.Interfaces;
-using ModuleAnalyzer.Core.Model;
-using OpenSoftware.DgmlTools;
+﻿using OpenSoftware.DgmlTools;
 using OpenSoftware.DgmlTools.Analyses;
 using OpenSoftware.DgmlTools.Builders;
 using OpenSoftware.DgmlTools.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using PsModuleAnalyzer.Core.Interfaces;
+using PsModuleAnalyzer.Core.Model;
 
-namespace ModuleAnalyzer.DgmlFormatter
+namespace PsModuleAnalyzer.DgmlFormatter
 {
     public class DgmlFormatter : IAnalyzerOutput
     {
@@ -25,7 +19,7 @@ namespace ModuleAnalyzer.DgmlFormatter
         public void CreateAnalyzerOutupt(List<ModuleCommandCall> commandCalls)
         {
             commandCalls = commandCalls.Where(commands => !commands.Target.IsExternal).ToList();
-            var builder = new DgmlBuilder(new HubNodeAnalysis(), new NodeReferencedAnalysis(), new CategoryColorAnalysis())
+            DgmlBuilder? builder = new DgmlBuilder(new HubNodeAnalysis(), new NodeReferencedAnalysis(), new CategoryColorAnalysis())
             {
 
                 CategoryBuilders = new CategoryBuilder[]
@@ -34,7 +28,6 @@ namespace ModuleAnalyzer.DgmlFormatter
                     {
                         Id = x.Source.Namespace,
                         Label = x.Source.Namespace
-
                     })
                 },
                 NodeBuilders = new NodeBuilder[]
@@ -59,7 +52,7 @@ namespace ModuleAnalyzer.DgmlFormatter
                             })
                 }
             };
-            var graph = builder.Build(commandCalls);
+            DirectedGraph? graph = builder.Build(commandCalls);
             graph.WriteToFile(_destinationFile);
         }
     }

@@ -1,9 +1,9 @@
-﻿using ModuleAnalyzer.App.Implementation.Visitor;
-using ModuleAnalyzer.Core.Factory;
-using ModuleAnalyzer.Core.Model;
-using ModuleAnalyzer.Core.Repository;
+﻿using PsModuleAnalyzer.App.Visitor;
+using PsModuleAnalyzer.Core.Factory;
+using PsModuleAnalyzer.Core.Model;
+using PsModuleAnalyzer.Core.Repository;
 
-namespace ModuleAnalyzer.App.Implementation.Factory
+namespace PsModuleAnalyzer.App.Factory
 {
     internal class DefaultCommandVisitorFactory : CommandVisitorFactory
     {

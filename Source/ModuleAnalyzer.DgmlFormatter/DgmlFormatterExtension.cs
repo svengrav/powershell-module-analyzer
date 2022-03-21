@@ -1,6 +1,6 @@
-﻿using ModuleAnalyzer.Core.Anaylzer;
+﻿using PsModuleAnalyzer.Core.Anaylzer;
 
-namespace ModuleAnalyzer.DgmlFormatter
+namespace PsModuleAnalyzer.DgmlFormatter
 {
     public static class DgmlFormatterExtension
     {

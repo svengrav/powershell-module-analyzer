@@ -1,9 +1,9 @@
-﻿using ModuleAnalyzer.App.Implementation.Factory;
-using ModuleAnalyzer.Core.Anaylzer;
-using ModuleAnalyzer.DgmlFormatter;
-using PSModuleAnalyzer.Implementation.Output;
+﻿using PsModuleAnalyzer.App.Factory;
+using PsModuleAnalyzer.App.Output;
+using PsModuleAnalyzer.Core.Anaylzer;
+using PsModuleAnalyzer.DgmlFormatter;
 
-namespace ModuleAnalyzer.App
+namespace PsModuleAnalyzer.App
 {
     public class Program
     {
