@@ -2,6 +2,7 @@
 using PsModuleAnalyzer.App.Output;
 using PsModuleAnalyzer.Core.Anaylzer;
 using PsModuleAnalyzer.DgmlFormatter;
+using PsModuleAnaylzer.CSV;
 
 namespace PsModuleAnalyzer.App
 {
@@ -12,7 +13,9 @@ namespace PsModuleAnalyzer.App
             ModuleAnalyzer? analyzer = ModuleAnalyzerBuilder.Create("D:\\Repositories\\Go\\Source\\Go.psd1")
                 .AddCommandVisitor<DefaultCommandVisitorFactory>()
                 .AddDgmlFormatter("d:\\module.dgml")
-                .AddOutputWriter(new MermaidOutput("d:\\module.md"))
+                .AddCSVFormatter("d:\\module.csv")
+                .AddCSVFormatter("d:\\module-compact.csv", true)
+                .AddOutputFormatter(new MermaidOutput("d:\\module.md"))
                 .Build();
 
             analyzer.Analyze();

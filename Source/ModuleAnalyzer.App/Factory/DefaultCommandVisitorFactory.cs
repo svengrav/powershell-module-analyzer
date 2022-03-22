@@ -1,7 +1,6 @@
 ﻿using PsModuleAnalyzer.App.Visitor;
 using PsModuleAnalyzer.Core.Factory;
 using PsModuleAnalyzer.Core.Model;
-using PsModuleAnalyzer.Core.Repository;
 
 namespace PsModuleAnalyzer.App.Factory
 {

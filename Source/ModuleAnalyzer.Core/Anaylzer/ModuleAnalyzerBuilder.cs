@@ -19,7 +19,7 @@ namespace PsModuleAnalyzer.Core.Anaylzer
             return new ModuleAnalyzerBuilder(modulePath);
         }
 
-        public ModuleAnalyzerBuilder AddOutputWriter(IAnalyzerOutput output)
+        public ModuleAnalyzerBuilder AddOutputFormatter(IAnalyzerOutput output)
         {
             _analyzerOutputs.Add(output);
             return this;
@@ -34,7 +34,7 @@ namespace PsModuleAnalyzer.Core.Anaylzer
         public ModuleAnalyzer Build()
         {
             ModuleAnalyzer? analyzer = new ModuleAnalyzer(_modulePath);
-            analyzer.SetFactory(_factory);
+            analyzer.SetCommandVisitorFactory(_factory);
 
             _analyzerOutputs.ForEach(output => analyzer.AddOutputFormat(output));
             return analyzer;

@@ -13,9 +13,9 @@ namespace PsModuleAnalyzer.App.Output
             _destinationPath = destinationPath;
         }
 
-        public void CreateAnalyzerOutupt(List<ModuleCommandCall> moduleCommandCalls)
+        public void CreateAnalyzerOutupt(ModuleDefinition moduleDefinition)
         {
-            var content = CreateMarkdownContent(moduleCommandCalls);
+            var content = CreateMarkdownContent(moduleDefinition.ModuleCommandCalls);
             WriteMarkdownFile(content);
         }
 

@@ -3,11 +3,15 @@
     public class ModuleExternalCommand : IModuleCommand
     {
         public string Name { get; private set; }
-        public List<ModuleCommand> ReferencedBy { get; private set; } = new();
-        public List<ModuleCommandParameter> Parameters { get; private set; } = new();
+        public List<IModuleCommand> ReferencedBy { get; }
+        public List<IModuleCommand> References { get => new(); }
+        public List<ModuleCommandParameter> Parameters { get => new(); }
         public int NumberOfReferencedBy { get; set; } = 0;
         public bool IsExternal { get; }
-        public string Namespace { get; private set; } = "External";
+        public string _commandFile { get; private set; } = "External";
+
+        public string Namespace { get => ""; }
+
 
         public ModuleExternalCommand(string name)
         {

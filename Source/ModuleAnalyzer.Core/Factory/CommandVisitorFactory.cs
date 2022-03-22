@@ -1,5 +1,4 @@
 ﻿using PsModuleAnalyzer.Core.Model;
-using PsModuleAnalyzer.Core.Repository;
 using PsModuleAnalyzer.Core.Visitor;
 
 namespace PsModuleAnalyzer.Core.Factory

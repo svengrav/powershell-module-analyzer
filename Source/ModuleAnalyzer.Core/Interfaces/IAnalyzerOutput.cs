@@ -4,6 +4,6 @@ namespace PsModuleAnalyzer.Core.Interfaces
 {
     public interface IAnalyzerOutput
     {
-        public void CreateAnalyzerOutupt(List<ModuleCommandCall> commandCalls);
+        public void CreateAnalyzerOutupt(ModuleDefinition moduleDefinition);
     }
 }

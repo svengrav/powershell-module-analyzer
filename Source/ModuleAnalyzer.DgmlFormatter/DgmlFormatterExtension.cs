@@ -6,7 +6,7 @@ namespace PsModuleAnalyzer.DgmlFormatter
     {
         public static ModuleAnalyzerBuilder AddDgmlFormatter(this ModuleAnalyzerBuilder moduleAnalyzerBuilder, string destinationPath)
         {
-            moduleAnalyzerBuilder.AddOutputWriter(new DgmlFormatter(destinationPath));
+            moduleAnalyzerBuilder.AddOutputFormatter(new DgmlFormatter(destinationPath));
             return moduleAnalyzerBuilder;
         }
     }

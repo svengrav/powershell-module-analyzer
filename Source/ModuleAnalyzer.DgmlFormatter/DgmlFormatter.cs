@@ -16,9 +16,9 @@ namespace PsModuleAnalyzer.DgmlFormatter
             _destinationFile = destinationFile;
         }
 
-        public void CreateAnalyzerOutupt(List<ModuleCommandCall> commandCalls)
+        public void CreateAnalyzerOutupt(ModuleDefinition moduleDefinition)
         {
-            commandCalls = commandCalls.Where(commands => !commands.Target.IsExternal).ToList();
+            var commandCalls = moduleDefinition.ModuleCommandCalls.Where(commands => !commands.Target.IsExternal).ToList();
             DgmlBuilder? builder = new DgmlBuilder(new HubNodeAnalysis(), new NodeReferencedAnalysis(), new CategoryColorAnalysis())
             {
 

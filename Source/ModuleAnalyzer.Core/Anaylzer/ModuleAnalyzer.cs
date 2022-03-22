@@ -1,7 +1,6 @@
 ﻿using PsModuleAnalyzer.Core.Factory;
 using PsModuleAnalyzer.Core.Interfaces;
 using PsModuleAnalyzer.Core.Model;
-using PsModuleAnalyzer.Core.Repository;
 using PsModuleAnalyzer.Core.Visitor;
 using System.Management.Automation;
 using System.Management.Automation.Language;
@@ -16,11 +15,7 @@ namespace PsModuleAnalyzer.Core.Anaylzer
 
         internal ModuleAnalyzer(string modulePath)
         {
-            PSModuleInfo? moduleInfo = LoadModuleFromPath(modulePath);
-            _moduleDefinition = new ModuleDefinition(moduleInfo.Name, moduleInfo.ModuleBase);
-
-            var commands = CreateModuleCommandList(moduleInfo).ToHashSet();
-            _moduleDefinition.AddModuleCommands(commands);
+            _moduleDefinition = new ModuleDefinition(modulePath);
         }
 
         public void AddOutputFormat(IAnalyzerOutput output)
@@ -28,7 +23,7 @@ namespace PsModuleAnalyzer.Core.Anaylzer
             AnalyzerOutputFormatters.Add(output);
         }
 
-        public void SetFactory(CommandVisitorFactory factory)
+        public void SetCommandVisitorFactory(CommandVisitorFactory factory)
         {
             Factory = factory;
         }
@@ -37,64 +32,31 @@ namespace PsModuleAnalyzer.Core.Anaylzer
         {
             foreach (ModuleCommand? command in _moduleDefinition.ModuleCommands)
             {
-                ScriptBlockAst? ast = Parser.ParseInput(
+                ScriptBlockAst ast = Parser.ParseInput(
                     command.Definition,
                     out Token[] tokens,
                     out ParseError[] errors
                                 );
 
+                List<ParameterAst> paramastList = new();
+                var newAst = (ScriptBlockAst) ast.Copy();
+                if(ast.ParamBlock != null)
+                {
+                    foreach (var param in ast.ParamBlock.Parameters)
+                        paramastList.Add((ParameterAst)param.Copy());
+                }
+
+                FunctionDefinitionAst fast = new FunctionDefinitionAst(newAst.Extent, false, false, command.Name, paramastList, newAst);
                 CommandVisitor? commandVisitor = Factory.Create(command, _moduleDefinition);
-                ast.Visit(commandVisitor);
+                fast.Visit(commandVisitor);
             }
 
-            CreateOutput(_moduleDefinition.ModuleCommandCalls);
+            CreateOutput();
         }
 
-        private void CreateOutput(List<ModuleCommandCall> commandCalls)
+        private void CreateOutput()
         {
-            AnalyzerOutputFormatters.ForEach(output => output.CreateAnalyzerOutupt(commandCalls));
-        }
-
-        private static PSModuleInfo LoadModuleFromPath(string modulePath)
-        {
-            PowerShell? ps = PowerShell.Create();
-            ps.AddScript("Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted; Get-ExecutionPolicy");
-            ps.Commands.AddScript($"Import-Module {modulePath} -PassThru");
-            return ps.Invoke<PSModuleInfo>().First();
-        }
-
-        private string GetCommandNamespace(string name, string abosoluteCommandPath)
-        {
-            return abosoluteCommandPath
-                .Replace(_moduleDefinition.Path, "")
-                .Replace($"{name}.ps1", "")
-                .Trim('\\')
-                .Replace("\\", ".");
-        }
-
-        private List<ModuleCommand> CreateModuleCommandList(PSModuleInfo moduleInfo)
-        {
-            List<ModuleCommand>? moduleCommandList = new List<ModuleCommand>();
-            foreach (KeyValuePair<string, FunctionInfo> command in moduleInfo.ExportedFunctions)
-            {
-                ModuleCommand? moduleCommand = new ModuleCommand(command.Value.Name, command.Value.Definition, GetCommandNamespace(command.Value.Name, command.Value.ScriptBlock.File));
-                try
-                {
-                    foreach (KeyValuePair<string, ParameterMetadata> param in command.Value.Parameters)
-                    {
-                        ModuleCommandParameter? moduleCommandParam = new ModuleCommandParameter(moduleCommand, param.Value.Name, param.Value.ParameterType.Name);
-                        moduleCommand.Parameters.Add(moduleCommandParam);
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("Param Error");
-                }
-
-
-                moduleCommandList.Add(moduleCommand);
-            }
-            return moduleCommandList;
+            AnalyzerOutputFormatters.ForEach(output => output.CreateAnalyzerOutupt(_moduleDefinition));
         }
     }
 }
