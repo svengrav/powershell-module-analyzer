@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PsModuleAnalyzer.App": {
+      "commandName": "Project",
+      "commandLineArgs": "-p \"D:\\Repositories\\navcontainerhelper\\BcContainerHelper.psd1\" -o \"d:\\test\" -n \"test\""
+    }
+  }
+}
