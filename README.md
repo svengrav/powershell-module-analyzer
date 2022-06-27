@@ -13,6 +13,13 @@ The PowerShell analyzer is a little prototype which is made for analyzing PowerS
 
 ---
 ## HowTo
+### 
+Build tool:
+- dotnet build "./src/" -o "./output/" 
+
+Start tool:
+- & ".\output\*.exe" -p "D:\Repositories\Go\Source\Go.psd1" -o "."
+
 ### Startup Arguments
   
 | Parameter | Parameter (long) | Required | Description                                                |
